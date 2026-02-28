@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回鄉守護的溫度 — 大甲盈盈藥局的故事 | 荷友舒藥師團隊</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sky-blue: #87CEEB;
+            --peach: #FFB6A3;
+            --mint-green: #B5E7A0;
+            --sunshine-yellow: #FFD966;
+            --soft-cream: #FFF9F0;
+            --warm-text: #3D3D3D;
+            --light-text: #666666;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--soft-cream);
+            color: var(--warm-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(135, 206, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 182, 163, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(181, 231, 160, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .decorative-circle {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(135, 206, 235, 0.3), transparent);
+            top: 10%;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 182, 163, 0.3), transparent);
+            top: 50%;
+            right: -50px;
+            animation-delay: 5s;
+        }
+
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(181, 231, 160, 0.3), transparent);
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-30px) translateX(20px); }
+            50% { transform: translateY(-60px) translateX(-20px); }
+            75% { transform: translateY(-30px) translateX(20px); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.2) 0%, rgba(255, 182, 163, 0.2) 100%);
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 217, 102, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 4px solid var(--sky-blue);
+            box-shadow: 0 8px 25px rgba(135, 206, 235, 0.4);
+            object-fit: cover;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--warm-text);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 0.2s backwards;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 0.4s backwards;
+        }
+
+        .meta-info {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+
+        .meta-info span {
+            margin: 0 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-section {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(135, 206, 235, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .image-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(135, 206, 235, 0.4);
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 5px solid var(--sky-blue);
+            border-radius: 25px;
+            transition: transform 0.4s ease;
+        }
+
+        .image-section:hover img {
+            transform: scale(1.03);
+        }
+
+        .image-section:nth-child(4n+1) img {
+            border-color: var(--sky-blue);
+        }
+
+        .image-section:nth-child(4n+2) img {
+            border-color: var(--peach);
+        }
+
+        .image-section:nth-child(4n+3) img {
+            border-color: var(--mint-green);
+        }
+
+        .image-section:nth-child(4n) img {
+            border-color: var(--sunshine-yellow);
+        }
+
+        .image-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--light-text);
+            font-style: italic;
+        }
+
+        .text-section {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            border: 3px solid var(--peach);
+            box-shadow: 0 8px 30px rgba(255, 182, 163, 0.25);
+            position: relative;
+        }
+
+        .text-section::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, var(--sky-blue), var(--peach), var(--mint-green), var(--sunshine-yellow));
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .text-section:hover::before {
+            opacity: 0.3;
+        }
+
+        .text-section p {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .text-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .text-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .text-section ul li {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .text-section ul li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--mint-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .wavy-divider {
+            width: 100%;
+            height: 30px;
+            margin: 60px 0;
+            background: linear-gradient(135deg, var(--sky-blue), var(--peach), var(--mint-green), var(--sunshine-yellow));
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30'%3E%3Cpath d='M0,15 Q150,0 300,15 T600,15 T900,15 T1200,15' fill='none' stroke='black' stroke-width='30'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30'%3E%3Cpath d='M0,15 Q150,0 300,15 T600,15 T900,15 T1200,15' fill='none' stroke='black' stroke-width='30'/%3E%3C/svg%3E");
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+            opacity: 0.6;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(255, 182, 163, 0.15) 100%);
+            padding: 50px 40px;
+            border-radius: 35px;
+            border: 4px solid;
+            border-image: linear-gradient(135deg, var(--sky-blue), var(--peach), var(--mint-green)) 1;
+            box-shadow: 0 12px 40px rgba(135, 206, 235, 0.3);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .contact-card h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--warm-text);
+        }
+
+        .contact-info {
+            font-size: 1.15rem;
+            line-height: 2.2;
+            margin-bottom: 35px;
+            color: var(--warm-text);
+        }
+
+        .contact-info div {
+            margin-bottom: 12px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-blue {
+            background: linear-gradient(135deg, var(--sky-blue), #6BB6D6);
+            color: white;
+        }
+
+        .btn-peach {
+            background: linear-gradient(135deg, var(--peach), #FF9B88);
+            color: white;
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, var(--mint-green), #9DD485);
+            color: white;
+        }
+
+        .kuse-branding {
+            margin-top: 80px;
+            padding: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .kuse-branding:hover {
+            color: var(--sky-blue);
+            transform: scale(1.05);
+        }
+
+        .kuse-branding svg {
+            height: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .kuse-branding:hover svg {
+            color: var(--sky-blue);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .text-section {
+                padding: 30px 25px;
+            }
+
+            .text-section p,
+            .text-section ul li {
+                font-size: 1rem;
+            }
+
+            .contact-card {
+                padding: 35px 25px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .circle-1,
+            .circle-2,
+            .circle-3 {
+                display: none;
+            }
+        }
+
+        @media print {
+            body::before,
+            .decorative-circle,
+            .kuse-branding,
+            .button-group {
+                display: none;
+            }
+
+            .section {
+                opacity: 1;
+                transform: none;
+            }
+
+            .image-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decorative-circle circle-1"></div>
+    <div class="decorative-circle circle-2"></div>
+    <div class="decorative-circle circle-3"></div>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://api.kuse.ai/api/folder/v1/file/ecc0a82ffd162201cd6f7477f69aafa7a399fa29b8e4e73f9fc549617103fbe4_1887246.jpeg" alt="大甲盈盈藥局" class="logo">
+        </div>
+        <h1>回鄉守護的溫度 — 大甲盈盈藥局的故事</h1>
+        <p class="subtitle">在地女兒用專業與熱忱，為家鄉打造最值得信賴的健康守護站</p>
+        <div class="meta-info">
+            <span>荷友舒藥師團隊</span>
+            <span>|</span>
+            <span>發布日期：2026年2月</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <div class="image-section">
+                <img src="https://api.kuse.ai/api/folder/v1/file/401b78e69e1ad86e7dd2b14a9b47b565d9a947e8d408beebf1c6d6196e68645c_1887247.jpg" alt="盈盈藥局外觀">
+            </div>
+            <p class="image-caption">盈盈藥局外觀 - 位於台中大甲區的溫暖角落</p>
+        </div>
+
+        <div class="section">
+            <div class="text-section">
+                <p>現在的年輕人，多半選擇往大城市發展，但也有人選擇回到熟悉的家鄉，用專業守護最親切的土地與人情味❤️</p>
+                <p>大甲盈盈藥局就是這樣一間充滿溫度的在地藥局。由大甲在地女兒回鄉創立，希望把在外累積的專業與經驗，帶回家鄉，陪伴鄉親們一起照顧健康。</p>
+                <p>現在由👩‍⚕️游藥師👨‍⚕️陳藥師兩位專業藥師長期駐點服務，不只是配藥、賣藥，更希望成為大家生活中「有健康問題就會想到的地方」。</p>
+            </div>
+        </div>
+
+        <div class="wavy-divider"></div>
+
+        <div class="section">
+            <div class="image-section">
+                <img src="https://api.kuse.ai/api/folder/v1/file/869dd4f97282b0be3b4b1771a594844e8c36d4925cf4849f1cf6cbb285eb5e01_1887245.jpg" alt="藥局內部陳列">
+            </div>
+            <p class="image-caption">藥局內部陳列 - 整齊專業的商品配置</p>
+        </div>
+
+        <div class="section">
+            <div class="text-section">
+                <p>有時候是一句關心，有時候是一個用藥提醒，有時候只是進門聊聊近況。這些日常的小互動，就是社區藥局最珍貴的價值。</p>
+                <p>盈盈藥局不只是販售藥品的地方，更是社區健康管理的好夥伴。從日常用藥、慢性病處方調劑，到保健食品諮詢與營養補充建議，我們希望讓每一位走進藥局的顧客，都能獲得清楚、安心且貼心的專業協助。</p>
+            </div>
+        </div>
+
+        <div class="wavy-divider"></div>
+
+        <div class="section">
+            <div class="image-section">
+                <img src="https://api.kuse.ai/api/folder/v1/file/40c616e5b7ceec1ff96642bb892f7a80ace38126c8480570445fddc2df0c3df1_1887340.jpg" alt="專業藥師諮詢服務">
+            </div>
+            <p class="image-caption">專業藥師諮詢服務 - 耐心傾聽每一位顧客的需求</p>
+        </div>
+
+        <div class="section">
+            <div class="text-section">
+                <p>盈盈藥局秉持「專業、安心、溫度」的理念，致力於提供居民最值得信賴的藥事服務與健康照護建議。</p>
+                <ul>
+                    <li>健保特約藥局 - 全省各大醫學中心、區域醫院診所、牙科處方箋皆可免費領取</li>
+                    <li>慢性病連續處方箋領藥 - 免奔波、免排隊，方便又安心</li>
+                    <li>專業用藥與保健諮詢 - 任何健康大小事都歡迎進來問問我們</li>
+                    <li>社區家庭的健康補給站 - 嚴選進口保健食品、世界各國優質藥品、婦嬰用品與嬰幼兒照護</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="wavy-divider"></div>
+
+        <div class="section">
+            <div class="image-section">
+                <img src="https://api.kuse.ai/api/folder/v1/file/dc261f58b0c9305aac6220cc2fc61692d596127e5537e229e46cbb9ccdc0dc7d_1887338.jpg" alt="豐富的商品種類">
+            </div>
+            <p class="image-caption">豐富的商品種類 - 從保健食品到日常用品應有盡有</p>
+        </div>
+
+        <div class="section">
+            <div class="text-section">
+                <p>盈盈藥局同時也是「荷友舒藥師團隊」的一員。荷友舒藥師團隊由專業藥師組成，強調正確用藥教育、個人化健康評估、慢性病與長期用藥管理、銀髮族與營養支持專業建議，以及媽媽寶寶與家庭照護諮詢。</p>
+                <p>我們相信，藥師不只是調劑處方，更是守護家庭健康的重要角色。透過團隊專業交流與持續進修，確保每位顧客都能獲得最新、最正確的藥學知識與用藥指導。</p>
+            </div>
+        </div>
+
+        <div class="wavy-divider"></div>
+
+        <div class="section">
+            <div class="image-section">
+                <img src="https://api.kuse.ai/api/folder/v1/file/ee7efd4a19805ceea4a58e8a36aed58b3d4a8500ba9c3cf58d412f461d1da30f_1887339.jpg" alt="專業保健食品陳列">
+            </div>
+            <p class="image-caption">專業保健食品陳列 - 為您精選最適合的健康方案</p>
+        </div>
+
+        <div class="section">
+            <div class="image-section">
+                <img src="https://api.kuse.ai/api/folder/v1/file/8c86221d33ad07c921513f6d029843a7ae3482e73d9903da37ffa3fe8d99d17a_1887442.jpg" alt="溫馨的服務環境">
+            </div>
+            <p class="image-caption">溫馨的服務環境 - 讓每位顧客都感受到家的溫暖</p>
+        </div>
+
+        <div class="section">
+            <div class="image-section">
+                <img src="https://api.kuse.ai/api/folder/v1/file/d23d05becf8a09baad09cdc72af3193fbce3edfd9a5b93591abb8b52e112c183_1887444.jpg" alt="專業的藥品管理">
+            </div>
+            <p class="image-caption">專業的藥品管理 - 確保每一份藥品的品質與安全</p>
+        </div>
+
+        <div class="wavy-divider"></div>
+
+        <div class="section">
+            <div class="text-section">
+                <p>我們希望這裡不只是藥局，更像社區的一個安心角落。</p>
+                <p>長輩來領藥有人關心，年輕爸媽買奶粉有人建議，上班族下班後還能安心諮詢。每一位走進來的客人，都是我們想用心服務的鄰居。</p>
+                <p>謝謝大家一路以來的支持與信任，未來也請繼續讓我們守護大家的健康😊</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="contact-card">
+                <h2>🔥 大甲盈盈藥局</h2>
+                <div class="contact-info">
+                    <div>📍 台中市大甲區文武路18號</div>
+                    <div>📞 04-2680-4212</div>
+                    <div>🕗 08:00－21:50（全年無休）</div>
+                    <div>⭐ Google評分：4.9 / 5.0（超過400則評價）</div>
+                </div>
+                <div class="button-group">
+                    <a href="https://www.facebook.com/people/%E5%A4%A7%E7%94%B2%E7%9B%88%E7%9B%88%E8%97%A5%E5%B1%80/100057483759939/" target="_blank" class="btn btn-blue"><span>前往藥局粉專</span></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台中市大甲區文武路18號" target="_blank" class="btn btn-peach"><span>查看Google地圖</span></a>
+                    <a href="https://pharmhoyosu.com.tw/" target="_blank" class="btn btn-green"><span>荷友舒官網</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="kuse-branding" onclick="window.open('https://kuse.ai', '_blank')">
+            <span>made with</span>
+            <svg viewBox="0,0,160,44" xmlns="http://www.w3.org/2000/svg"><path d="m.01,20.65C-.43,8.25,9.3-2.03,22.04.34,34.78,2.72,43.29,8.32,43.29,22.9s-8.66,19.01-22.03,20.3C7.9,44.5.46,33.05.01,20.65z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="m146.76,7.94c8.07,0,13.24,6.15,13.24,14.58v1.39h-20.75c.45,4.05,3.51,7.37,8.57,7.37,2.62,0,5.73-1.05,7.62-2.94l2.67,3.83c-2.67,2.55-6.62,3.88-10.9,3.88-8.07,0-14.08-5.6-14.08-14.08,0-7.76,5.67-14.02,13.63-14.02zm0,4.77c-5.01,0-7.29,3.83-7.57,7.1h15.13c-.11-3.16-2.28-7.1-7.57-7.1z" fill="currentColor"/><path d="m86.64,24.49c0,4.15,2.39,6.84,6.84,6.84,4.4,0,6.84-2.69,6.84-6.84V8.55h5.37v16.33c0,6.7-4.06,11.14-12.21,11.14-8.21,0-12.21-4.5-12.21-11.09V8.55h5.37v15.94zm32.99-16.55c4.49,0,8.06,1.47,10.6,3.86l-2.59,3.81c-2.05-2-5.28-3.08-8.06-3.08-2.88,0-4.84,1.37-4.84,3.32,0,1.91,2.64,2.54,5.81,3.27,4.59,1.08,10.26,2.4,10.26,8.46,0,4.94-3.76,8.41-11.14,8.41-4.98,0-8.94-1.76-11.24-4.11l2.54-4.11c1.86,1.91,5.18,3.67,8.84,3.67,3.91,0,5.57-1.66,5.57-3.62,0-2.3-2.88-2.98-6.21-3.76-4.54-1.08-9.87-2.3-9.87-8.06,0-4.5,4.2-8.06,10.31-8.06zM60.79,20.82,71.44,8.55h6.5L66.46,21.26,78.82,35.44h-6.5l-9.28-11.1-2.25,2.49v8.6h-5.33V8.55h5.33v12.27z" fill="currentColor"/></svg>
+        </div>
+    </div>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: `0px 0px -100px 0px`
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(`visible`);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(`.section`).forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll(`a[href^="http"]`).forEach(link => {
+            link.setAttribute(`rel`, `noopener noreferrer`);
+        });
+
+        document.querySelectorAll(`.image-section img`).forEach(img => {
+            img.loading = `lazy`;
+        });
+    </script>
+
+    <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
+</body>
+</html>
